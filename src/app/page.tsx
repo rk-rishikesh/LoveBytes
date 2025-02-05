@@ -1,27 +1,28 @@
 import Image from "next/image";
-import { WalletOptions } from "./wallet";
+// import { WalletOptions } from "./wallet";
 import Header from "./components/header";
 import Footer from "./components/footer";
 
 export default function Home() {
   return (
     <div className="fixed w-full min-h-screen bg-[#C2B7FF] bg-hero">
-    <Header />
-    <div >
-   
-      <div
-        className="z-10 relative w-full pt-48 pb-40 m-auto flex justify-center text-center flex-col items-center z-1 text-white mt-36"
-        style={{ maxWidth: "1200px" }}
-      >
-        <Image alt="heart" src="/assets/heart.png" width={400} height={400} className="absolute "/>
-        <button className="heartbutton">
-  L O V E B Y T E
-</button>
-        <div className="relative rounded-full overflow-hidden bg-white shadow-xl w-72">
-          
-          
-          
-          {/* <input
+      <Header />
+      <div >
+
+        <div
+          className="z-10 relative w-full pt-48 pb-40 m-auto flex justify-center text-center flex-col items-center z-1 text-white mt-36"
+          style={{ maxWidth: "1200px" }}
+        >
+          <Image alt="heart" src="/assets/heart.png" width={400} height={400} className="absolute " />
+          <button className="heartbutton">
+            L O V E B Y T E
+          </button>
+          <div className="text-white absolute mt-20">ENTER TO WRITE</div>
+          <div className="relative rounded-full overflow-hidden bg-white shadow-xl w-72">
+
+
+
+            {/* <input
             className="input bg-transparent outline-none border-none pl-6 pr-10 py-5 w-full font-sans text-lg font-semibold text-black"
             placeholder="Hover on Submit"
             name="text"
@@ -69,12 +70,12 @@ export default function Home() {
               ></div>
             </button>
           </div> */}
+          </div>
+
         </div>
 
       </div>
-     
+      <Footer />
     </div>
-    <Footer />
-  </div>
   );
 }
