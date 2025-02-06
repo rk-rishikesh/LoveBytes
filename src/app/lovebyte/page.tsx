@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image";
-import "./card.css";
+
 
 export default function Dummy() {
   return (
@@ -16,25 +16,24 @@ export default function Dummy() {
             alt="FIL-B Logo"
           />
         </div>
-        <div className="">
-         
-          <div className="mt-16 mb-10 px-8 flex justify-center flex-col items-center">
-            <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10"/>
-            <textarea
-              id="paperTextarea"
-              className="w-[600] px-16 py-10 min-h-[200px] resize-y
+        <div className="mt-16 mb-10 px-8 flex justify-center flex-col items-center">
+          <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
+
+          <textarea
+            id="paperTextarea"
+            className="w-[600px] h-[200px] px-16 py-10 resize-y
                      text-gray-800 placeholder-gray-500
                      bg-transparent outline-none "
-              placeholder="Write your love byte..."
-              style={{
-                backgroundImage: `url("/assets/hero/input.svg")`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
-            />
-          </div>
-
+            placeholder="Write your love byte..."
+            style={{
+              backgroundImage: `url("/assets/hero/paper.png")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+          />
         </div>
+
+
         <div className="flex flex-row gap-0">
           <Image
             className="cursor-pointer "

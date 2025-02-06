@@ -16,6 +16,7 @@ export default {
         'hook': "url('/assets/hooks.svg')",
         'hero': "url('/assets/hero.svg')",
         'input': "url('/assets/hero/input.svg')",
+        'paper': "url('/assets/hero/paper.png')",
       }
     },
   },
