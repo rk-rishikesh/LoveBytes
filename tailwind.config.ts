@@ -15,7 +15,7 @@ export default {
       backgroundImage: {
         'hook': "url('/assets/hooks.svg')",
         'hero': "url('/assets/hero.svg')",
-        'input': "url('/assets/inputBox.svg')",
+        'input': "url('/assets/hero/input.svg')",
       }
     },
   },

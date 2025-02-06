@@ -2,6 +2,7 @@ import Image from "next/image";
 // import { WalletOptions } from "./wallet";
 import Header from "./components/header";
 import Footer from "./components/footer";
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -13,11 +14,18 @@ export default function Home() {
           className="z-10 relative w-full pt-48 pb-40 m-auto flex justify-center text-center flex-col items-center z-1 text-white mt-36"
           style={{ maxWidth: "1200px" }}
         >
+          {/* <Link href="/login"> */}
+
           <Image alt="heart" src="/assets/heart.png" width={400} height={400} className="absolute " />
-          <button className="heartbutton">
-            L O V E B Y T E
-          </button>
-          <div className="text-white absolute mt-20">ENTER TO WRITE</div>
+          <Link href="/lovebyte">
+            <button className="heartbutton">
+              L O V E B Y T E
+            </button>
+          </Link>
+          <div className="text-white absolute mt-20 text-xs">CLICK TO ENTER</div>
+
+
+          {/* </Link> */}
           <div className="relative rounded-full overflow-hidden bg-white shadow-xl w-72">
 
 
