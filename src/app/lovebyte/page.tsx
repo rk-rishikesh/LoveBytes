@@ -6,9 +6,12 @@ import { Blocklock, encodeCiphertextToSolidity } from "blocklock-js";
 import { AbiCoder } from "ethers";
 import { CONTRACT_ABI } from "../contract/contractDetails";
 import { ChangeEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Dummy() {
+export default function LoveByte() {
+  const router = useRouter();
 
+  const [loading, setLoading] = useState(false);
   const [value, setValue] = useState<string>("");
 
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -16,7 +19,7 @@ export default function Dummy() {
   };
 
   const engraveMessage = async () => {
-
+    setLoading(true);
     console.log("Started")
     // Check if MetaMask is installed
     if (!window.ethereum) {
@@ -24,17 +27,17 @@ export default function Dummy() {
     }
 
     // Request account access
-    const accounts = await window.ethereum.request({ 
-      method: 'eth_requestAccounts' 
+    const accounts = await window.ethereum.request({
+      method: 'eth_requestAccounts'
     });
-    
+
     // Create BrowserProvider and Signer (updated for ethers v6)
     const provider = new BrowserProvider(window.ethereum);
     const signer = await provider.getSigner();
 
     // Create Contract Instance
     const contract = new Contract(
-      "0x06b3AF15fDf198C06307CA2187831892E63D8Cd4",
+      "0xdAE55018E30929e2992d27e7c4038CBF4FDB9aaf",
       CONTRACT_ABI,
       signer
     );
@@ -71,11 +74,13 @@ export default function Dummy() {
     console.log(receipt);
     console.log("Encrypted at : ", await provider.getBlockNumber());
     console.log("Will decrypt at : ", blockHeight);
+    setLoading(false);
+    router.push("/show");
   }
 
   return (
     <>
-      <div className="w-full min-h-screen bg-black flex justify-center p-2 flex-col items-center">
+      <div className="w-full min-h-screen bg-black bg-hero flex justify-center p-2 flex-col items-center">
         <div className="flex flex-row gap-0">
           <Image
             className="cursor-pointer "

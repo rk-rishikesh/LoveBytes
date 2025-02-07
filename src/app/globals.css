@@ -22,7 +22,7 @@ body {
 
 .heartbutton,.heartbutton::after {
   padding: 10px 50px;
-  font-size: 50px;
+  font-size: 40px;
   border: none;
   border-radius: 5px;
   color: white;

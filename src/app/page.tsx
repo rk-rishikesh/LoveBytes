@@ -1,12 +1,10 @@
 "use client"
 import { useEffect, useState } from "react";
-import Image from "next/image";
-// import { WalletOptions } from "./wallet";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Link from 'next/link'
 import { WalletOptions } from "./wallet";
-import { useAccount, useDisconnect, useEnsName } from 'wagmi'
+import { useAccount } from 'wagmi'
 
 export default function Home() {
 
@@ -25,37 +23,34 @@ export default function Home() {
 
 
   return (
-    <div className="fixed w-full min-h-screen bg-[#C2B7FF] bg-hero">
+    <div className="fixed w-full min-h-screen bg-black bg-hero flex justify-center items-center">
       <Header />
       <div >
 
         <div
-          className="z-10 relative w-full pt-48 pb-40 m-auto flex justify-center text-center flex-col items-center z-1 text-white mt-36"
+          className="z-10 w-full m-auto flex justify-center text-center flex-col items-center z-1 text-white"
           style={{ maxWidth: "1200px" }}
         >
-          <Image alt="heart" src="/assets/heart.png" width={400} height={400} className="absolute " />
-
           {accountAddress == "" ?
             <>
               <button className="heartbutton">
                 L O V E B Y T E
               </button>
-              <div className="text-white absolute mt-20 text-xs">
+              <div className="text-white mt-20 text-xs">
                 <WalletOptions />
               </div>
             </>
             :
-            <>
+            <div className="flex flex-col justify-center items-center text-center">
               <Link href="/lovebyte">
                 <button className="heartbutton">
                   L O V E B Y T E
                 </button>
+                <div className="text-white text-xs">
+                  CLICK TO ENTER
+                </div>
               </Link>
-              <div className="text-white absolute mt-20 text-xs">
-                CLICK TO ENTER
-              </div>
-            </>
-
+            </div>
           }
         </div>
       </div>
