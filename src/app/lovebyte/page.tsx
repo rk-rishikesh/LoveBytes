@@ -75,6 +75,7 @@ export default function LoveByte() {
     console.log("Encrypted at : ", await provider.getBlockNumber());
     console.log("Will decrypt at : ", blockHeight);
     setLoading(false);
+    console.log(loading)
     router.push("/show");
   }
 
