@@ -7,6 +7,7 @@ import { AbiCoder } from "ethers";
 import { CONTRACT_ABI } from "../contract/contractDetails";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAccount } from 'wagmi'
 
 export default function LoveByte() {
   const router = useRouter();
@@ -14,13 +15,14 @@ export default function LoveByte() {
   const [loading, setLoading] = useState(false);
   const [value, setValue] = useState<string>("");
 
+  const { address } = useAccount()
+
   const handleChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setValue(e.target.value);
   };
 
   const engraveMessage = async () => {
     setLoading(true);
-    console.log("Started")
     // Check if MetaMask is installed
     if (!window.ethereum) {
       throw new Error("Please install MetaMask!");
@@ -46,7 +48,6 @@ export default function LoveByte() {
 
     const blockHeight = BigInt((await provider.getBlockNumber()) + 5);
 
-    // const msg = "Decentralized love 💙 Built to last, just like Filecoin!💙";
     const msgBytes = AbiCoder.defaultAbiCoder().encode(["string"], [value]);
     const encodedMessage = ethers.getBytes(msgBytes);
 
@@ -55,6 +56,7 @@ export default function LoveByte() {
       accounts,
       "0xfF66908E1d7d23ff62791505b2eC120128918F44"
     );
+
     const ciphertext = blocklockjs.encrypt(encodedMessage, blockHeight);
 
     // Call `createTimelockRequest` on the user's contract
@@ -75,52 +77,75 @@ export default function LoveByte() {
     console.log("Will decrypt at : ", blockHeight);
     setLoading(false);
     console.log(loading)
-    router.push("/share");
+    const requestId = await contract.userRequestId(address);
+    router.push(`/share/${requestId}`);
   }
 
-  return (
-    <>
-      <div className="w-full min-h-screen bg-black bg-hero flex justify-center p-2 flex-col items-center">
-        <div className="flex flex-row gap-0">
-          <Image
-            className="cursor-pointer "
-            src="/assets/hero/lovebyte.svg"
-            width={600}
-            height={615}
-            alt="FIL-B Logo"
-          />
-        </div>
-        <div className="mt-16 mb-10 px-8 flex justify-center flex-col items-center">
-          <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
-
-          <textarea
-            id="paperTextarea"
-            className="w-[600px] h-[200px] px-12 py-10
-                     text-gray-800 placeholder-gray-500
-                     bg-transparent outline-none "
-            placeholder="Write your love byte..."
-            style={{
-              backgroundImage: `url("/assets/hero/paper.png")`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center'
-            }}
-            onChange={handleChange}
-          />
-        </div>
-
-
-        <div className="flex flex-row gap-0">
-          <Image
-            className="cursor-pointer "
-            src="/assets/hero/cta.svg"
-            width={220}
-            height={40}
-            alt="FIL-B Logo"
-            onClick={engraveMessage}
-          />
-        </div>
+  if (loading) {
+    return (<>
+      <div className="w-full min-h-screen bg-black bg-hero gap-8 flex justify-center p-2 flex-col items-center">
+        <Image
+          className="cursor-pointer animate-pulse"
+          src="/assets/loader.svg"
+          width={600}
+          height={615}
+          alt="FIL-B Logo"
+        />
+        <Image
+          className="cursor-pointer mt-8"
+          src="/assets/encrypt.svg"
+          width={300}
+          height={615}
+          alt="FIL-B Logo"
+        />
       </div>
-    </>
-  )
+    </>)
+  } else {
+    return (
+      <>
+        <div className="w-full min-h-screen bg-black bg-hero flex justify-center p-2 flex-col items-center">
+          <div className="flex flex-row gap-0">
+            <Image
+              className="cursor-pointer "
+              src="/assets/hero/lovebyte.svg"
+              width={600}
+              height={615}
+              alt="FIL-B Logo"
+            />
+          </div>
+          <div className="mt-16 mb-10 px-8 flex justify-center flex-col items-center">
+            <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
+
+            <textarea
+              id="paperTextarea"
+              className="w-[600px] h-[200px] px-12 py-10
+                       text-gray-800 placeholder-gray-500
+                       bg-transparent outline-none "
+              placeholder="Write your love byte..."
+              style={{
+                backgroundImage: `url("/assets/hero/paper.png")`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center'
+              }}
+              onChange={handleChange}
+            />
+          </div>
+
+
+          <div className="flex flex-row gap-0">
+            <Image
+              className="cursor-pointer "
+              src="/assets/hero/cta.svg"
+              width={220}
+              height={40}
+              alt="FIL-B Logo"
+              onClick={engraveMessage}
+            />
+          </div>
+        </div>
+      </>
+    )
+  }
+
 
 }
