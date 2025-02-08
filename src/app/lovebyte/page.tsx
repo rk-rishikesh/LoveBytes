@@ -44,7 +44,6 @@ export default function LoveByte() {
 
     console.log(contract)
 
-    // Set block height (current block + 2)
     const blockHeight = BigInt((await provider.getBlockNumber()) + 5);
 
     // const msg = "Decentralized love 💙 Built to last, just like Filecoin!💙";
@@ -76,7 +75,7 @@ export default function LoveByte() {
     console.log("Will decrypt at : ", blockHeight);
     setLoading(false);
     console.log(loading)
-    router.push("/show");
+    router.push("/share");
   }
 
   return (
