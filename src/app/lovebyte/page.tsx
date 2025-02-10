@@ -39,7 +39,7 @@ export default function LoveByte() {
 
     // Create Contract Instance
     const contract = new Contract(
-      "0xdAE55018E30929e2992d27e7c4038CBF4FDB9aaf",
+      "0xcF04a63AedF2B4d83f3fFA40b523694df0e8F6C9",
       CONTRACT_ABI,
       signer
     );
@@ -69,6 +69,7 @@ export default function LoveByte() {
 
     console.log("Timelock request created!");
     const requestId = await contract.userRequestId(address);
+    console.log("Request ID ", requestId, " will decrypt at : ", blockHeight)
     router.push(`/share/${requestId}`);
     setLoading(false);
   }

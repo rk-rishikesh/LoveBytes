@@ -18,15 +18,15 @@ export default function Id() {
                 const provider = new JsonRpcProvider("https://api.calibration.node.glif.io/rpc/v1");
 
                 const contract = new Contract(
-                    "0xdAE55018E30929e2992d27e7c4038CBF4FDB9aaf",
+                    "0xcF04a63AedF2B4d83f3fFA40b523694df0e8F6C9",
                     CONTRACT_ABI,
                     provider
                 );
 
-                const owner = await contract.ownerOfRequestId(params.id);
-                console.log(owner)
+                // const owner = await contract.ownerOfRequestId(params.id);
+                // console.log(owner)
 
-                const lovebyte = await contract.userMessage(owner);
+                const lovebyte = await contract.userMessage(params.id);
                 setUserMessage(lovebyte);
             } catch (error) {
                 console.error("Error fetching owner:", error);

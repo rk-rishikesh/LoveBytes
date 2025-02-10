@@ -95,8 +95,14 @@ export const CONTRACT_ABI= [
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "encryptedValue",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "userEncryptedValue",
 		"outputs": [
 			{
 				"components": [
@@ -135,25 +141,6 @@ export const CONTRACT_ABI= [
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"name": "ownerOfRequestId",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
 			}
 		],
 		"name": "userMessage",
