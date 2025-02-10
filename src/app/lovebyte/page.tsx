@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import { ethers, BrowserProvider, Contract } from "ethers";
@@ -44,8 +44,6 @@ export default function LoveByte() {
       signer
     );
 
-    console.log(contract)
-
     const blockHeight = BigInt((await provider.getBlockNumber()) + 5);
 
     const msgBytes = AbiCoder.defaultAbiCoder().encode(["string"], [value]);
@@ -65,87 +63,65 @@ export default function LoveByte() {
 
     const receipt = await tx.wait(1);
 
-    console.log(receipt);
-
     if (!receipt) {
       throw new Error("Transaction has not been mined");
     }
 
     console.log("Timelock request created!");
-    console.log(receipt);
-    console.log("Encrypted at : ", await provider.getBlockNumber());
-    console.log("Will decrypt at : ", blockHeight);
-    setLoading(false);
-    console.log(loading)
     const requestId = await contract.userRequestId(address);
     router.push(`/share/${requestId}`);
+    setLoading(false);
   }
 
   if (loading) {
-    return (<>
+    return (
       <div className="w-full min-h-screen bg-black bg-hero gap-8 flex justify-center p-2 flex-col items-center">
         <Image
           className="cursor-pointer animate-pulse"
           src="/assets/loader.svg"
           width={600}
           height={615}
-          alt="FIL-B Logo"
+          alt=""
         />
         <Image
           className="cursor-pointer mt-8"
           src="/assets/encrypt.svg"
           width={300}
           height={615}
-          alt="FIL-B Logo"
+          alt=""
         />
       </div>
-    </>)
+    );
   } else {
     return (
-      <>
-        <div className="w-full min-h-screen bg-black bg-hero flex justify-center p-2 flex-col items-center">
-          <div className="flex flex-row gap-0">
-            <Image
-              className="cursor-pointer "
-              src="/assets/hero/lovebyte.svg"
-              width={600}
-              height={615}
-              alt="FIL-B Logo"
-            />
-          </div>
-          <div className="mt-16 mb-10 px-8 flex justify-center flex-col items-center">
-            <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
+      <div className="w-full min-h-screen bg-black flex justify-center p-2 flex-col items-center">
 
-            <textarea
-              id="paperTextarea"
-              className="w-[600px] h-[200px] px-12 py-10
-                       text-gray-800 placeholder-gray-500
-                       bg-transparent outline-none "
-              placeholder="Write your love byte..."
-              style={{
-                backgroundImage: `url("/assets/hero/paper.png")`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center'
-              }}
-              onChange={handleChange}
-            />
-          </div>
-
-
-          <div className="flex flex-row gap-0">
-            <Image
-              className="cursor-pointer "
-              src="/assets/hero/cta.svg"
-              width={220}
-              height={40}
-              alt="FIL-B Logo"
-              onClick={engraveMessage}
-            />
-          </div>
+        <div className="mt-16 mb-10 px-4 sm:px-8 lg:px-16 flex justify-center flex-col items-center">
+          <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
+          <textarea
+            id="paperTextarea"
+            className="lg:w-[600px] w-[300px] lg:h-[200px] h-[150px] px-4 sm:px-6 md:px-12 lg:py-10 py-4 text-[#FF35D0] placeholder-[#FF35D0] bg-transparent outline-none"
+            placeholder="Write your love byte..."
+            style={{
+              backgroundColor:"#696969",
+              backgroundSize: 'cover',
+              backgroundPosition: 'center'
+            }}
+            onChange={handleChange}
+          />
         </div>
-      </>
-    )
+
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Image
+            className="cursor-pointer"
+            src="/assets/hero/cta.svg"
+            width={220}
+            height={40}
+            alt=""
+            onClick={engraveMessage}
+          />
+        </div>
+      </div>
+    );
   }
-
-
 }

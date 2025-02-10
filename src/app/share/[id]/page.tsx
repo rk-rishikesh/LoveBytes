@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useParams } from 'next/navigation'
 import { Contract, JsonRpcProvider } from "ethers";
 import { CONTRACT_ABI } from "../../contract/contractDetails";
+import CountdownTimer from "./countdown";
 
 export default function Id() {
 
@@ -35,81 +36,118 @@ export default function Id() {
         fetchData();
     }, [params.id]);
 
-
-
     return (
         <>
-            {message == "" ?
-                <>
-                    <div className="w-full min-h-screen bg-black flex bg-hero justify-center p-2 flex-col items-center">
-                        <div className="flex flex-row gap-0">
-                            <Image
-                                className="cursor-pointer "
-                                src="/assets/share/topText.svg"
-                                width={600}
-                                height={615}
-                                alt="FIL-B Logo"
-                            />
-                        </div>
-                        <div className="px-8 flex justify-center flex-col items-center">
-                            <Image
-                                alt=""
-                                src="/assets/share/date.svg"
-                                width={500}
-                                height={64}
-                            />
-                        </div>
+            <div className="w-full min-h-screen bg-black flex justify-center p-4 flex-col items-center gap-12 mt-24">
+                {message ? <>
 
-                        <div className="flex flex-row gap-0">
-                            <Image
-                                className="cursor-pointer "
-                                src="/assets/share/bottomtext.svg"
-                                width={220}
-                                height={40}
-                                alt="FIL-B Logo"
+                    {/* Top Image */}
+                    <Image
+                        className="cursor-pointer"
+                        src="/images/view/text.svg"
+                        width={500}
+                        height={64}
+                        alt=""
+                    />
 
-                            />
-                        </div>
+                    {/* Textarea */}
+                    <div
+                        className="w-[90%] sm:w-[350px] md:w-[450px] lg:w-[600px] h-[150px] sm:h-[180px] md:h-[200px] lg:h-[200px] 
+            px-4 sm:px-6 md:px-12 lg:py-10 py-4 text-[#FF35D0] placeholder-[#FF35D0] bg-transparent outline-none"
+                        style={{
+                            backgroundColor: "#696969",
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center'
+                        }}
+                    >
+                        {message}
                     </div>
-                </> :
 
-                <>
-                    <div className="w-full min-h-screen bg-black bg-hero flex justify-center p-2 flex-col items-center">
-                        <div className="flex flex-row gap-0">
-                            <Image
-                                className="cursor-pointer "
-                                src="/assets/share/text.svg"
-                                width={600}
-                                height={615}
-                                alt="FIL-B Logo"
-                            />
-                        </div>
-                        <div className="mt-16 mb-10 px-8 flex justify-center flex-col items-center">
+                    {/* Copy Image */}
+                    <Image
+                        alt=""
+                        src="/images/view/check.svg"
+                        width={500}
+                        height={64}
+                    />
 
-                            <div className="">
-                                <div
-                                    className="w-[600px] h-[200px] px-12 py-10 text-black"
-                                    style={{
-                                        backgroundImage: `url("/assets/hero/paper.png")`,
-                                        backgroundSize: 'cover',
-                                        backgroundPosition: 'center'
-                                    }}>{message}</div>
-                            </div>
-                        </div>
+                    {/* How-to Image */}
+                    <Image
+                        className="cursor-pointer"
+                        src="/images/share/how.svg"
+                        width={200}
+                        height={64}
+                        alt=""
+                    />
 
+                    {/* Steps Image */}
+                    <Image
+                        className="cursor-pointer"
+                        src="/images/share/steps.svg"
+                        width={500}
+                        height={64}
+                        alt=""
+                    />
 
-                        <div className="flex flex-row gap-0">
-                            <Image
-                                className="cursor-pointer "
-                                src="/assets/share/check.svg"
-                                width={350}
-                                height={40}
-                                alt="FIL-B Logo"
+                    {/* Usecase Image */}
+                    <Image
+                        className="cursor-pointer mt-24"
+                        src="/images/share/usecase.svg"
+                        width={200}
+                        height={64}
+                        alt=""
+                    />
+                </> : <>
+                    {/* Top Image */}
+                    <Image
+                        className="cursor-pointer"
+                        src="/images/share/top.svg"
+                        width={500}
+                        height={64}
+                        alt=""
+                    />
 
-                            />
-                        </div>
-                    </div>
+                    {/* Textarea */}
+
+                    <CountdownTimer />
+
+                    {/* Copy Image */}
+                    <Image
+                        alt=""
+                        src="/images/share/copy.svg"
+                        width={500}
+                        height={64}
+                    />
+
+                    {/* How-to Image */}
+                    <Image
+                        className="cursor-pointer"
+                        src="/images/share/how.svg"
+                        width={200}
+                        height={64}
+                        alt=""
+                    />
+
+                    {/* Steps Image */}
+                    <Image
+                        className="cursor-pointer"
+                        src="/images/share/steps.svg"
+                        width={500}
+                        height={64}
+                        alt=""
+                    />
+
+                    {/* Usecase Image */}
+                    <Image
+                        className="cursor-pointer mt-24"
+                        src="/images/share/usecase.svg"
+                        width={200}
+                        height={64}
+                        alt=""
+                    />
                 </>}
+
+            </div>
 
         </>
     )
