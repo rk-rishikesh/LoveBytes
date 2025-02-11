@@ -102,7 +102,7 @@ export default function LoveByte() {
       <div className="w-full min-h-screen bg-black flex justify-center p-2 flex-col items-center">
         <Header />
         <div className="mt-16 mb-10 px-4 sm:px-8 lg:px-16 flex justify-center flex-col items-center">
-          <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
+          <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10 w-[200px]" />
           <textarea
             id="paperTextarea"
             className="lg:w-[600px] w-[300px] leading-[59.27px] lg:h-[200px] h-[150px] px-4 sm:px-6 md:px-12 lg:py-10 py-4 text-[#FF35D0] placeholder-[#FF35D0] bg-transparent outline-none"
@@ -118,7 +118,7 @@ export default function LoveByte() {
 
         <div className="flex flex-col sm:flex-row gap-4">
           <Image
-            className="cursor-pointer"
+            className="cursor-pointer w-[150px]"
             src="/assets/hero/cta.svg"
             width={220}
             height={40}

@@ -45,7 +45,7 @@ export default function Id() {
             <Header />
             {/* Top Section */}
             <Image
-                className="cursor-pointer pt-4"
+                className={message ? "pt-4 w-[250px]": "pt-4 w-[320px]"}
                 src={message ? "/images/view/text.svg" : "/images/share/top.svg"}
                 width={500}
                 height={64}
@@ -68,6 +68,7 @@ export default function Id() {
             {!message && (
                 <button onClick={copyToClipboard} className="focus:outline-none">
                     <Image
+                        className="w-[320px]"
                         alt="Copy Button"
                         src={copied ? "/images/share/copied.svg" : "/images/share/copy.svg"}
                         width={500}

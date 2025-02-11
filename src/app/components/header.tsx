@@ -15,7 +15,7 @@ const Header = () => {
           <Image
             src="/assets/logo/logo.svg"
             alt="Love"
-            width={250}
+            width={220}
             height={200}
           />
         </a>
