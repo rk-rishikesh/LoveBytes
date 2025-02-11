@@ -25,7 +25,12 @@ export default {
         'hero': "url('/assets/hero.svg')",
         'input': "url('/assets/hero/input.svg')",
         'paper': "url('/assets/hero/paper.png')",
-      }
+      },
+      fontFamily: {
+        rethink: ["Rethink_Sans", "sans-serif"], 
+        robotoMono: ["Roboto_Mono", "sans-serif"],
+        mPlus: ["M_PLUS_Code_Latin", "sans-serif"]
+      },
     },
   },
   plugins: [],

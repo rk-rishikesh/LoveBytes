@@ -101,8 +101,8 @@ export default function LoveByte() {
           <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
           <textarea
             id="paperTextarea"
-            className="lg:w-[600px] w-[300px] lg:h-[200px] h-[150px] px-4 sm:px-6 md:px-12 lg:py-10 py-4 text-[#FF35D0] placeholder-[#FF35D0] bg-transparent outline-none"
-            placeholder="Write your love byte..."
+            className="lg:w-[600px] w-[300px] leading-[59.27px] lg:h-[200px] h-[150px] px-4 sm:px-6 md:px-12 lg:py-10 py-4 text-[#FF35D0] placeholder-[#FF35D0] bg-transparent outline-none"
+            placeholder="I"
             style={{
               backgroundColor:"#696969",
               backgroundSize: 'cover',
