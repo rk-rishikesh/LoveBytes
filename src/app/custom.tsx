@@ -1,7 +1,15 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useAccount, useBalance } from 'wagmi';
+
 export const Wallet = () => {
+
+    const { address } = useAccount();
+    const { data: balance } = useBalance({
+        address: address,
+    });
+
     return (
         <ConnectButton.Custom>
             {({
@@ -74,11 +82,24 @@ export const Wallet = () => {
                                                 )}
                                             </div>
                                         )}
-
                                     </button>
-                                    <Link href="/lovebyte">
-                                        <Image src="/images/enter.svg" alt="" width={150} height={20} className="w-[150px] -ml-2" />
-                                    </Link>
+                                    {balance?.value == BigInt(0) ?
+                                        <div className='text-[#FF35D0] text-xl text-center'>
+                                            YOUR ACCOUNT BALANCE IS ZERO, GET tFIL{' '}
+                                            <a
+                                                href="https://faucet.calibnet.chainsafe-fil.io/funds.html"
+                                                className="text-[#FF35D0] underline text-xl"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                HERE
+                                            </a>{' '} TO PROCEED
+                                        </div>
+                                        :
+                                        <Link href="/lovebyte">
+                                           
+                                            <Image src="/images/enter.svg" alt="" width={150} height={20} className="w-[150px] -ml-2" />
+                                        </Link>}
                                 </div>
                             );
                         })()}

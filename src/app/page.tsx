@@ -15,7 +15,16 @@ export default function Home() {
           </div>
           <div className="flex gap-2">
             <span className="font-rethink">1.</span>
-            <span className="font-rethink">Connect wallet to Filecoin’s calibration testnet (get some tFIL, faucet here)</span>
+            <span className="font-rethink">Connect wallet to Filecoin’s calibration testnet (get some tFIL, faucet{' '}
+              <a
+                href="https://faucet.calibnet.chainsafe-fil.io/funds.html"
+                className="text-[#FF35D0] underline"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                here
+              </a>)
+            </span>
           </div>
           <div className="flex gap-2">
             <span className="font-rethink">2.</span>

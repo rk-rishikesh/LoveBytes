@@ -8,6 +8,7 @@ import { CONTRACT_ABI } from "../contract/contractDetails";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAccount } from 'wagmi'
+import Header from "../components/header";
 
 export default function LoveByte() {
   const router = useRouter();
@@ -44,7 +45,7 @@ export default function LoveByte() {
       signer
     );
 
-    const blockHeight = BigInt((await provider.getBlockNumber()) + 5);
+    const blockHeight = BigInt(2405506);
 
     const msgBytes = AbiCoder.defaultAbiCoder().encode(["string"], [value]);
     const encodedMessage = ethers.getBytes(msgBytes);
@@ -76,14 +77,17 @@ export default function LoveByte() {
 
   if (loading) {
     return (
-      <div className="w-full min-h-screen bg-black bg-hero gap-8 flex justify-center p-2 flex-col items-center">
-        <Image
-          className="cursor-pointer animate-pulse"
-          src="/assets/loader.svg"
-          width={600}
-          height={615}
-          alt=""
-        />
+      <div className="w-full min-h-screen bg-black gap-8 flex justify-center p-2 flex-col items-center">
+        <div className="flex flex-row gap-2">
+          <div className="w-4 h-4 rounded-full bg-[#FF35D0] animate-bounce"></div>
+          <div
+            className="w-4 h-4 rounded-full bg-[#FF35D0] animate-bounce [animation-delay:-.3s]"
+          ></div>
+          <div
+            className="w-4 h-4 rounded-full bg-[#FF35D0] animate-bounce [animation-delay:-.5s]"
+          ></div>
+        </div>
+
         <Image
           className="cursor-pointer mt-8"
           src="/assets/encrypt.svg"
@@ -96,15 +100,15 @@ export default function LoveByte() {
   } else {
     return (
       <div className="w-full min-h-screen bg-black flex justify-center p-2 flex-col items-center">
-
+        <Header />
         <div className="mt-16 mb-10 px-4 sm:px-8 lg:px-16 flex justify-center flex-col items-center">
           <Image alt="" src="assets/hero/text.svg" width={280} height={64} className="mb-10" />
           <textarea
             id="paperTextarea"
             className="lg:w-[600px] w-[300px] leading-[59.27px] lg:h-[200px] h-[150px] px-4 sm:px-6 md:px-12 lg:py-10 py-4 text-[#FF35D0] placeholder-[#FF35D0] bg-transparent outline-none"
-            placeholder="I"
+            placeholder=""
             style={{
-              backgroundColor:"#696969",
+              backgroundColor: "#E2E8F0",
               backgroundSize: 'cover',
               backgroundPosition: 'center'
             }}

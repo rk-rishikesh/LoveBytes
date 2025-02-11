@@ -9,7 +9,7 @@ const CountdownTimer = () => {
   });
 
   // Set your target date here
-  const targetDate = new Date('2025-02-14T23:59:59').getTime();
+  const targetDate = new Date('2025-02-14T00:00:00Z').getTime();
 
   useEffect(() => {
     const timer = setInterval(() => {
