@@ -12,18 +12,6 @@ import Header from "@/app/components/header";
 export default function Id() {
     const params = useParams();
     const [message, setUserMessage] = useState<string>("");
-    const [copied, setCopied] = useState(false);
-
-    // Function to copy URL to clipboard
-    const copyToClipboard = async () => {
-        try {
-            await navigator.clipboard.writeText(`https://yourlovebytes.vercel.app/view/${params.id}`);
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000); // Reset after 2 sec
-        } catch (err) {
-            console.error("Failed to copy URL:", err);
-        }
-    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -62,19 +50,6 @@ export default function Id() {
                 </div>
             ) : (
                 <CountdownTimer />
-            )}
-
-            {/* Copy Button */}
-            {!message && (
-                <button onClick={copyToClipboard} className="focus:outline-none">
-                    <Image
-                        className="w-[320px]"
-                        alt="Copy Button"
-                        src={copied ? "/images/share/copied.svg" : "/images/share/copy.svg"}
-                        width={500}
-                        height={64}
-                    />
-                </button>
             )}
 
             {/* Instruction & About Section */}
