@@ -126,7 +126,13 @@ export default function LoveByte() {
             onClick={engraveMessage}
           />
         </div>
+        <div className="flex flex-col sm:flex-row gap-4 mt-8">
+          <div className="text-[19px] text-[#FF35D0] text-center">
+          NOTE: ONCE DECRYPTED, MESSAGES ARE NOT PRIVATE 👀
+          </div>
+          </div>
       </div>
+
     );
   }
 }
